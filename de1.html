@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 300px;
+            border: 1px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .header {
+            background-color: #6200ea;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .form-container {
+            padding: 20px;
+        }
+
+        .form-container h4 {
+            text-align: center;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .buttons button {
+            width: 45%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #6200ea;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .buttons button:nth-child(1) {
+            background-color: #ff4081;
+        }
+
+        #error {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Baithi1</h1>
+        </div>
+        <div class="form-container">
+            <h4>LOGIN FORM</h4>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="buttons">
+                <button type="button" onclick="exit()">EXIT</button>
+                <button type="button" onclick="login()">LOG IN</button>
+            </div>
+            <p id="error"></p>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'admin' && password === 'admin') {
+                window.location.href = 'dangky.html';
+                username = ''
+                password = ''
+            } else {
+                document.getElementById('error').innerText = 'Invalid username or password. Please try again.';
+            }
+        }
+        window.onload = function () {
+            if (sessionStorage.getItem('loggedIn')) {
+                // Nếu đã đăng nhập, chuyển hướng đến trang đăng ký
+                window.location.href = 'dangky.html';
+            }
+        };
+
+        function exit() {
+            window.close();
+        }
+    </script>
+</body>
+
+</html>
